@@ -43,7 +43,15 @@ function getInputElement(type, name, placeholder) {
     inputElement.name = name;
     inputElement.placeholder = placeholder;
     inputElement.classList.add('text-field');
-    return inputEl
+    return inputElement
+}
+
+function getLinkElement(text, href) {
+    const linkElement = document.createElement('a');
+    linkElement.textContent = text;
+    linkElement.href = href;
+    linkElement.classList.add('link');
+    return linkElement
 }
 
 function navigate(cardName) {
@@ -90,9 +98,31 @@ function createLoginCard(containerElement) {
     const formElement = getFormElement();
     let loginInputElement = getInputElement('text', 'email', 'E-mail');
     let passwordInputElement = getInputElement('password', 'password', 'Пароль');
-    let loginButtonElement = getButtonElement();
+    let loginButtonElement = getButtonElement("Войти");
 
+    const centerWrapElement = getCenterWrapElement();
+    const homeLinkElement = getLinkElement('На главную');
+    const regLinkElement = getLinkElement('Регистрация');
 
+    homeLinkElement.addEventListener('click', function (e) {
+        e.preventDefault();
+        navigate();
+    });
+
+    regLinkElement.addEventListener('click', function (e) {
+        e.preventDefault();
+        navigate('reg');
+    });
+
+    formElement.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Вход в аккаунт')
+    });
+
+    containerElement.append(cardElement)
+    cardElement.append(titleElement, formElement, centerWrapElement);
+    formElement.append(loginInputElement, passwordInputElement, loginButtonElement);
+    centerWrapElement.append(homeLinkElement, regLinkElement);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
