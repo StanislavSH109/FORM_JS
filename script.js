@@ -11,13 +11,18 @@ function getTitleElement(text) {
     return titleElement
 }
 
-function getDescElement() {
+function getDescElement(text) {
     const descElement = document.createElement('p');
     descElement.textContent = text;
     descElement.classList.add('desc');
     return descElement
 }
 
+function getCenterWrapElement() {
+    let buttonWrapElement = document.createElement('div');
+    buttonWrapElement.classList.add('center-wrap');
+    return buttonWrapElement 
+}
 
 function navigate(cardName) {
     const appElement = document.getElementById('app');
