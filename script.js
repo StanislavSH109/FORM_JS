@@ -31,6 +31,21 @@ function getButtonElement(text) {
     return buttonElement
 }
 
+function getFormElement() {
+    const formElement = document.createElement('form');
+    formElement.classList.add('form');
+    return formElement
+}
+
+function getInputElement(type, name, placeholder) {
+    const inputElement = document.createElement('input');
+    inputElement.type = type;
+    inputElement.name = name;
+    inputElement.placeholder = placeholder;
+    inputElement.classList.add('text-field');
+    return inputEl
+}
+
 function navigate(cardName) {
     const appElement = document.getElementById('app');
     appElement.innerHTML = '';
@@ -66,6 +81,17 @@ function createHomeCard(containerElement) {
     containerElement.append(cardElement)
     cardElement.append(titleElement, descElement, centerWrapElement);
     centerWrapElement.append(loginButtonElement, regButtonElement);
+
+}
+
+function createLoginCard(containerElement) {
+    let cardElement = getCardEl();
+    const titleElement = getTitleElement('Вход в аккаунт');
+    const formElement = getFormElement();
+    let loginInputElement = getInputElement('text', 'email', 'E-mail');
+    let passwordInputElement = getInputElement('password', 'password', 'Пароль');
+    let loginButtonElement = getButtonElement();
+
 
 }
 
