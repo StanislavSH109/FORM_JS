@@ -24,6 +24,13 @@ function getCenterWrapElement() {
     return buttonWrapElement 
 }
 
+function getButtonElement(text) {
+    const buttonElement = document.createElement('button');
+    buttonElement.textContent = text;
+    buttonElement.classList.add('btn');
+    return buttonElement
+}
+
 function navigate(cardName) {
     const appElement = document.getElementById('app');
     appElement.innerHTML = '';
@@ -41,10 +48,24 @@ function navigate(cardName) {
 }
 
 function createHomeCard(containerElement) {
-    let cardEl = getCardEl();
+    let cardElement = getCardEl();
     const titleElement = getTitleElement('Добро пожаловать на сайт!');
     const descElement = getDescElement('Войдите в личный кабинет. Если Вы еще не зарегистрированы - пройдите регистрацию')
     const centerWrapElement = getCenterWrapElement();
+    const loginButtonElement = getButtonElement('Войти');
+    const regButtonElement = getButtonElement('Регистрация');
+
+    loginButtonElement.addEventListener('click', function () {
+        navigate('login');
+    });
+
+    regButtonElement.addEventListener('click', function () {
+        navigate('reg');
+    });
+
+    containerElement.append(cardElement)
+    cardElement.append(titleElement, descElement, centerWrapElement);
+    centerWrapElement.append(loginButtonElement, regButtonElement);
 
 }
 
